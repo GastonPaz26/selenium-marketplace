@@ -1,4 +1,4 @@
-package practiceGuru99.Test;
+package Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,8 +7,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import practicesGuru66.pageObjects.MobilePage;
-import practicesGuru99.TestComponents.BaseTest;
+import pageObjects.MobilePage;
+import TestComponents.BaseTest;
 
 public class VerifySortBy extends BaseTest {
 	@Test

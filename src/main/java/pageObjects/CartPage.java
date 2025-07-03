@@ -1,11 +1,11 @@
-package practicesGuru66.pageObjects;
+package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import practicesGuru99.AbstractComponents.AbstractComponent;
+import AbstractComponents.AbstractComponent;
 
 public class CartPage extends AbstractComponent {
 
@@ -23,7 +23,7 @@ public class CartPage extends AbstractComponent {
 
 	public WebElement waitForSuccessMsgToLoad(String produtName) {
 		By successMsgBy = By.xpath("//span[normalize-space()='" + produtName + " was added to your shopping cart.']");
-		waitForElementToAppear(successMsgBy);
+		waitForWebElementToAppear(successMsgBy);
 		WebElement successMsg = driver.findElement(successMsgBy);
 		return successMsg;
 
@@ -33,7 +33,7 @@ public class CartPage extends AbstractComponent {
 		By updateButtonLocator = By.xpath("//h2[@class='product-name']//a[normalize-space(text())='" + productName
 				+ "']/ancestor::tr//button[@name='update_cart_action']");
 
-		waitForElementToAppear(updateButtonLocator);
+		waitForWebElementToAppear(updateButtonLocator);
 		updateButton = driver.findElement(updateButtonLocator);
 		return updateButton;
 	}

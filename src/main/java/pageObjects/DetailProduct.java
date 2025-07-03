@@ -1,11 +1,11 @@
-package practicesGuru66.pageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import practicesGuru99.AbstractComponents.AbstractComponent;
+import AbstractComponents.AbstractComponent;
 
 public class DetailProduct extends AbstractComponent {
 	WebDriver driver;

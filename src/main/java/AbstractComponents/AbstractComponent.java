@@ -1,5 +1,4 @@
-package practicesGuru99.AbstractComponents;
-
+package AbstractComponents;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import practicesGuru66.pageObjects.MobilePage;
+import pageObjects.MobilePage;
 
 public class AbstractComponent {
 
@@ -49,16 +48,14 @@ public class AbstractComponent {
 		driver.get("http://live.techpanda.org/index.php/");
 	};
 
-	public void waitForWebElementToAppear(WebElement findBy) {
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOf(findBy));
-
+	public void waitForWebElementToAppear(WebElement element) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
-	public void waitForElementToAppear(By locator) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	public void waitForWebElementToAppear(By locator) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	protected WebElement waitForVisibility(By locator) {

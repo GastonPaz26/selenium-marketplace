@@ -1,4 +1,4 @@
-package practicesGuru99.TestComponents;
+package TestComponents;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,10 +14,11 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import practicesGuru99.AbstractComponents.AbstractComponent;
+import AbstractComponents.AbstractComponent;
 
 public class BaseTest {
 
@@ -31,7 +32,7 @@ public class BaseTest {
 
 		// Leemos el archivo Globaldata
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
-				+ "//src//main//java//practicesGuru99//resources//GlobalData.properties");
+				+ "//src//main//java//resources//GlobalData.properties");
 
 		// Cargamos el archivo a nuestras propiedades
 		prop.load(fis);
@@ -122,4 +123,11 @@ public class BaseTest {
 		landingPage.goToLandingPage();
 		return landingPage;
 	};
+	 @AfterMethod
+	    public void tearDown() {
+	        if (driver != null) {
+	            driver.quit();  // Limpieza final por si no se cerró antes
+	        }
+	    }
+	 
 }
