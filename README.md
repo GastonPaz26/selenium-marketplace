@@ -52,15 +52,11 @@ Select browser: Default Firefox; override via -Dbrowser=chrome or -Dbrowser=chro
 
 Run all tests:
 
-bash
-Copiar
-Editar
+
 mvn test
 Run specific test:
 
-bash
-Copiar
-Editar
+
 mvn -Dtest=VerifySortBy test
 Add tests: Create new class under src/test/java/Test, extend BaseTest, reuse/add page objects.
 
@@ -68,17 +64,11 @@ Add tests: Create new class under src/test/java/Test, extend BaseTest, reuse/add
 
 ⚠️ Educational project, not for production.
 
-🔐 Sensitive keys (id_rsa, id_rsa.pub) included only for exercise purposes.
 
-🚧 Future Improvements
 
-➕ Integrate BDD with Cucumber (feature files & step defs).
+---
 
-🛡️ Enhance error handling & test resilience.
-
-📈 Add more test scenarios (registration, checkout, etc.).
-
-🚀 Selenium Marketplace – Proyecto de Automatización 🚀
+**ESPAÑOL**
 
 🔍 Descripción general
 
@@ -124,24 +114,18 @@ Requisitos: Instalar Java 17 y Maven. (WebDriverManager gestiona drivers.)
 
 Clonar:
 
-bash
-Copiar
-Editar
+
 git clone https://github.com/GastonPaz26/selenium-marketplace.git
 cd selenium-marketplace
 Seleccionar navegador: Firefox por defecto; -Dbrowser=chrome[headless] para Chrome.
 
 Ejecutar todas las pruebas:
 
-bash
-Copiar
-Editar
+
 mvn test
 Ejecutar prueba específica:
 
-bash
-Copiar
-Editar
+
 mvn -Dtest=VerifySortBy test
 Añadir pruebas: Nueva clase en src/test/java/Test, extiende BaseTest, utiliza/crea page objects.
 
@@ -149,12 +133,4 @@ Añadir pruebas: Nueva clase en src/test/java/Test, extiende BaseTest, utiliza/c
 
 ⚠️ Proyecto educativo, no para producción.
 
-🔐 Claves sensibles incluidas solo para el ejercicio.
 
-🚧 Mejoras futuras
-
-➕ Integrar BDD (Cucumber: features & step defs).
-
-🛡️ Mejorar manejo de errores y robustez.
-
-📈 Añadir más escenarios de prueba (registro, checkout, etc.).
