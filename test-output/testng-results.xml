@@ -2,20 +2,27 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-02T20:08:52 AEST" name="Default suite" finished-at="2025-07-02T20:09:15 AEST" duration-ms="22788">
+  <suite started-at="2025-08-06T16:31:33 AEST" name="Default suite" finished-at="2025-08-06T16:31:56 AEST" duration-ms="22974">
     <groups>
     </groups>
-    <test started-at="2025-07-02T20:08:52 AEST" name="Default test" finished-at="2025-07-02T20:09:15 AEST" duration-ms="22788">
+    <test started-at="2025-08-06T16:31:33 AEST" name="Default test" finished-at="2025-08-06T16:31:56 AEST" duration-ms="22974">
       <class name="Test.VerifyCompareProducts">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Test.VerifyCompareProducts@6fa51cd4]" started-at="2025-07-02T20:08:53 AEST" name="launchApplication" finished-at="2025-07-02T20:09:03 AEST" duration-ms="10225" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Test.VerifyCompareProducts@742ff096]" started-at="2025-08-06T16:31:34 AEST" name="launchApplication" finished-at="2025-08-06T16:31:45 AEST" duration-ms="10860" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="sortByName()[pri:0, instance:Test.VerifyCompareProducts@6fa51cd4]" started-at="2025-07-02T20:09:03 AEST" name="sortByName" finished-at="2025-07-02T20:09:14 AEST" duration-ms="11381" status="PASS">
+        <test-method signature="sortByName(java.util.HashMap)[pri:0, instance:Test.VerifyCompareProducts@742ff096]" started-at="2025-08-06T16:31:45 AEST" name="sortByName" data-provider="getData" finished-at="2025-08-06T16:31:55 AEST" duration-ms="10755" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{product2=IPhone, product1=Sony Xperia}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sortByName -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:Test.VerifyCompareProducts@6fa51cd4]" started-at="2025-07-02T20:09:14 AEST" name="tearDown" finished-at="2025-07-02T20:09:15 AEST" duration-ms="1112" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Test.VerifyCompareProducts@742ff096]" started-at="2025-08-06T16:31:55 AEST" name="tearDown" finished-at="2025-08-06T16:31:56 AEST" duration-ms="1018" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

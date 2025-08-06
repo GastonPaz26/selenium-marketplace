@@ -49,17 +49,18 @@ public class AbstractComponent {
 	};
 
 	public void waitForWebElementToAppear(WebElement element) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.visibilityOf(element));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void waitForWebElementToAppear(By locator) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	protected WebElement waitForVisibility(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return wait
+				.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public void switchToNewWindow() {

@@ -36,6 +36,7 @@ public class ComparePopupPage extends AbstractComponent {
 		switchToNewWindow();
 
 		List<String> names = new ArrayList<>();
+		
 		for (WebElement product : productNames) {
 			// Obtengo el texto visible de cada producto
 			names.add(product.getText().toString().toLowerCase().trim());

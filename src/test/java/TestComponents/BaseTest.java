@@ -1,10 +1,15 @@
 package TestComponents;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +21,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import AbstractComponents.AbstractComponent;
@@ -73,7 +81,7 @@ public class BaseTest {
 			options.addPreference("security.warn_entering_weak", false);
 			options.addPreference("security.warn_leaving_secure", false);
 			options.addPreference("security.warn_viewing_mixed", false);
-			options.addPreference("security.warn_submit_insecure", false); // Ya la tenés
+			options.addPreference("security.warn_submit_insecure", false); 
 			
 
 
@@ -113,6 +121,23 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		return driver;
+
+	}
+	
+	
+	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
+
+		String path = filePath;
+		String jsonContent = FileUtils.readFileToString(new File(path),
+				StandardCharsets.UTF_8);
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
+				new TypeReference<List<HashMap<String, String>>>() {
+				});
+
+		return data;
 
 	}
 
