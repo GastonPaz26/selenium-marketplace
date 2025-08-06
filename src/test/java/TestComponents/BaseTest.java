@@ -1,10 +1,15 @@
-package practicesGuru99.TestComponents;
+package TestComponents;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,10 +19,14 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
-import practicesGuru99.AbstractComponents.AbstractComponent;
+import AbstractComponents.AbstractComponent;
 
 public class BaseTest {
 
@@ -31,7 +40,7 @@ public class BaseTest {
 
 		// Leemos el archivo Globaldata
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
-				+ "//src//main//java//practicesGuru99//resources//GlobalData.properties");
+				+ "//src//main//java//resources//GlobalData.properties");
 
 		// Cargamos el archivo a nuestras propiedades
 		prop.load(fis);
@@ -72,7 +81,7 @@ public class BaseTest {
 			options.addPreference("security.warn_entering_weak", false);
 			options.addPreference("security.warn_leaving_secure", false);
 			options.addPreference("security.warn_viewing_mixed", false);
-			options.addPreference("security.warn_submit_insecure", false); // Ya la tenés
+			options.addPreference("security.warn_submit_insecure", false); 
 			
 
 
@@ -114,6 +123,23 @@ public class BaseTest {
 		return driver;
 
 	}
+	
+	
+	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
+
+		String path = filePath;
+		String jsonContent = FileUtils.readFileToString(new File(path),
+				StandardCharsets.UTF_8);
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
+				new TypeReference<List<HashMap<String, String>>>() {
+				});
+
+		return data;
+
+	}
 
 	@BeforeMethod
 	public AbstractComponent launchApplication() throws IOException {
@@ -122,4 +148,11 @@ public class BaseTest {
 		landingPage.goToLandingPage();
 		return landingPage;
 	};
+	 @AfterMethod
+	    public void tearDown() {
+	        if (driver != null) {
+	            driver.quit();  // Limpieza final por si no se cerró antes
+	        }
+	    }
+	 
 }

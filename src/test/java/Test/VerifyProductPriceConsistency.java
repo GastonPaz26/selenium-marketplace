@@ -1,11 +1,11 @@
-package practiceGuru99.Test;
+package Test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import practicesGuru66.pageObjects.DetailProduct;
-import practicesGuru66.pageObjects.MobilePage;
-import practicesGuru99.TestComponents.BaseTest;
+import pageObjects.DetailProduct;
+import pageObjects.MobilePage;
+import TestComponents.BaseTest;
 
 public class VerifyProductPriceConsistency extends BaseTest {
 @Test

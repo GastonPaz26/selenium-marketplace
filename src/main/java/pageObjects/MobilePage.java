@@ -1,10 +1,11 @@
-package practicesGuru66.pageObjects;
+package pageObjects;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import practicesGuru99.AbstractComponents.AbstractComponent;
+import AbstractComponents.AbstractComponent;
 
 public class MobilePage extends AbstractComponent {
 
@@ -75,17 +76,32 @@ public class MobilePage extends AbstractComponent {
 		addButton.click();
 	}
 
-	public void clickAddToCompare(String productName) {
+	public void addProductsToCompare(List<String> productList) {
+	    for (String product : productList) {
+	        try {
+	            clickAddToCompareButton(product);
+	            System.out.println("Producto agregado a la comparación: " + product);
+	        } catch (NoSuchElementException | TimeoutException e) {
+	            System.err.println("❌ No se encontró el producto para agregar a la comparación: " + product);
+	        }
+	    }
+	}
 
-		WebElement addToCompare = driver.findElement(By.xpath("//h2[@class='product-name']/a[normalize-space(text())='"
-				+ productName + "']/ancestor::li//a[@class='link-compare']"));
-		addToCompare.click();
-	};
 
-	public void clickCompareButton() {
-		waitForWebElementToAppear(compareButton);
-		compareButton.click();
-	};
+	public void clickAddToCompareButton(String productName) {
+		By addToCompareButton = By
+				.xpath("//a[@title='" + productName + "']/following::a[contains(text(),'Add to Compare')]");
+		waitForWebElementToAppear(addToCompareButton);
+		driver.findElement(addToCompareButton).click();
+
+	}
+
+	public void clickCompareRedirectButton() {
+		WebElement clickCompareRedirectButton = driver.findElement(By.xpath("//button[@title='Compare']"));
+		waitForWebElementToAppear(clickCompareRedirectButton);
+		clickCompareRedirectButton.click();
+		
+	}
 
 	public void windowsHandle() {
 

@@ -1,10 +1,10 @@
-package practiceGuru99.Test;
+package Test;
 
 import org.testng.annotations.Test;
 
-import practicesGuru66.pageObjects.CartPage;
-import practicesGuru66.pageObjects.MobilePage;
-import practicesGuru99.TestComponents.BaseTest;
+import pageObjects.CartPage;
+import pageObjects.MobilePage;
+import TestComponents.BaseTest;
 
 public class VerifyQuantityLimitPerProduct extends BaseTest {
 	@Test
