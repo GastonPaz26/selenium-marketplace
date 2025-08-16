@@ -7,7 +7,7 @@
         <methods>
           <include name="launchApplication"/>
           <include name="tearDown"/>
-          <include name="sortByName"/>
+          <include name="sortByName" invocation-numbers="0"/>
         </methods>
       </class> <!-- Test.VerifyCompareProducts -->
     </classes>

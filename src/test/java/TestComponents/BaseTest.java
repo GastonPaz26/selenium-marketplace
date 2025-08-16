@@ -1,15 +1,10 @@
 package TestComponents;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Properties;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,9 +16,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import AbstractComponents.AbstractComponent;
@@ -47,25 +39,30 @@ public class BaseTest {
 
 		// Validamos que exista la propiedad Browser - En caso de ya existir la
 		// utilizamos, en caso contrario se setea la misma
-		String browserName = System.getProperty("browser") != null ? System.getProperty("browser")
+		String browserName = System.getProperty("browser") != null
+				? System.getProperty("browser")
 				: prop.getProperty("browser");
 
 		// Determinamos que driver se encuentra parametrizado
 		if (browserName.contains("chrome")) {
 
-			// ChromeOption es una clase de selenium que me permite manejar argumentos de
+			// ChromeOption es una clase de selenium que me permite manejar
+			// argumentos de
 			// chrome
 			ChromeOptions options = new ChromeOptions();
-			// Procede a descargar la version de chrome que se adapte a mi cliente
+			// Procede a descargar la version de chrome que se adapte a mi
+			// cliente
 			WebDriverManager.chromedriver().setup();
 
-			// Si en el nombre del browser contiene headless, se correra el test sin abrir
+			// Si en el nombre del browser contiene headless, se correra el test
+			// sin abrir
 			// una ventana del navegador (util para CI/CD)
 			if (browserName.contains("headless")) {
 				options.addArguments("headless");
 			}
 			driver = new ChromeDriver(options);
-			driver.manage().window().setSize(new Dimension(1440, 900));// full screen
+			driver.manage().window().setSize(new Dimension(1440, 900));// full
+																		// screen
 
 		}
 		// Validamos si es Firefox
@@ -76,14 +73,14 @@ public class BaseTest {
 			// Setup automático del driver
 			WebDriverManager.firefoxdriver().setup();
 			options.setProfile(new FirefoxProfile());
-			options.addPreference("security.insecure_field_warning.contextual.enabled", false);
+			options.addPreference(
+					"security.insecure_field_warning.contextual.enabled",
+					false);
 			options.addPreference("security.warn_entering_secure", false);
 			options.addPreference("security.warn_entering_weak", false);
 			options.addPreference("security.warn_leaving_secure", false);
 			options.addPreference("security.warn_viewing_mixed", false);
-			options.addPreference("security.warn_submit_insecure", false); 
-			
-
+			options.addPreference("security.warn_submit_insecure", false);
 
 			// Modo headless si se especifica
 			if (browserName.contains("headless")) {
@@ -104,7 +101,8 @@ public class BaseTest {
 			// Modo headless si se especifica
 			if (browserName.contains("headless")) {
 				options.addArguments("headless"); // en Edge no lleva "--"
-				options.addArguments("disable-gpu"); // opcional para headless más estable
+				options.addArguments("disable-gpu"); // opcional para headless
+														// más estable
 			}
 
 			// Tamaño de ventana como argumento
@@ -123,25 +121,8 @@ public class BaseTest {
 		return driver;
 
 	}
-	
-	
-	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
 
-		String path = filePath;
-		String jsonContent = FileUtils.readFileToString(new File(path),
-				StandardCharsets.UTF_8);
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
-				new TypeReference<List<HashMap<String, String>>>() {
-				});
-
-		return data;
-
-	}
-
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public AbstractComponent launchApplication() throws IOException {
 		driver = initializeDriver();
 		landingPage = new AbstractComponent(driver);
@@ -154,5 +135,5 @@ public class BaseTest {
 	            driver.quit();  // Limpieza final por si no se cerró antes
 	        }
 	    }
-	 
+
 }

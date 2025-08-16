@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pageObjects.ComparePopupPage;
@@ -14,8 +13,10 @@ import utils.AssertUtils;
 import TestComponents.BaseTest;
 
 public class VerifyCompareProducts extends BaseTest {
-	@Test(dataProvider = "getData")
-	public void sortByName(HashMap<String, String> input) throws IOException, InterruptedException {
+	
+	@Test(dataProvider = "compareProductsData", dataProviderClass = data.DataReader.class, groups= {"Smoke Test"})
+	public void sortByName(HashMap<String, String> input)
+			throws IOException, InterruptedException {
 
 		List<String> productList = List.of(input.get("product1"),
 				input.get("product2"));
@@ -36,10 +37,4 @@ public class VerifyCompareProducts extends BaseTest {
 
 	};
 
-	@DataProvider
-	public Object[][] getData() throws IOException{
-	    
-		List<HashMap<String, String>> data = getJsonDataToMap( System.getProperty("user.dir") + "/src/test/java/data/VerifyCompareProducts.json");
-		return new Object[][] {{data.get(0)}};
-	};
 }
