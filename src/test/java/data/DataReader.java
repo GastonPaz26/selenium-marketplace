@@ -1,17 +1,24 @@
 package data;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.testng.annotations.DataProvider;
+import utils.JsonUtils;
 
 public class DataReader {
 
-	
+	@DataProvider(name = "compareProductsData")
+	public Object[][] getData() throws IOException {
+		String path = System.getProperty("user.dir")
+				+ "/src/test/java/data/VerifyCompareProducts.json";
+		List<HashMap<String, String>> data = JsonUtils.getJsonDataFrom(path);
+
+		  Object[][] result = new Object[data.size()][1];
+		    for (int i = 0; i < data.size(); i++) {
+		        result[i][0] = data.get(i);
+		    }
+		return result;
+	}
 }

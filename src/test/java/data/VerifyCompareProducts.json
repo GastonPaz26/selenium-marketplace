@@ -1,5 +1,13 @@
 [{
 	"product1":"Sony Xperia",
-	"product2": "IPhone"
+	"product2": "s"
 	
-}]
+},	{
+		"product1":"Sony Xperia",
+		"product2": "IPhone"
+		
+	},		{
+			"product1":"Sony Xperia",
+			"product2": "IPhone"
+			
+		}]

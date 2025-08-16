@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+
+	<groups>
+		<run>
+			<include name="Smoke Test" />
+		</run>
+	</groups>
+
+	<listeners>
+		<listener class-name="TestComponents.Listeners" />
+	</listeners>
+
+
+	<test thread-count="1" name="Compare Products Test">
+		<classes>
+			<class name="Test.VerifyCompareProducts" />
+
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->
